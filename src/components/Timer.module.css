@@ -1,0 +1,74 @@
+.timerContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.widgetText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.timerLabel {
+  font-family: var(--font-technical);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+}
+
+.timerDigits {
+  font-family: var(--font-technical);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-shadow: var(--glow-subtle);
+}
+
+.circularSvg {
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+}
+
+.circleBg {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 2.5;
+}
+
+.circleFillTime {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2.5;
+  stroke-linecap: square;
+  transition: stroke-dasharray 0.1s linear;
+}
+
+/* Warning States */
+.warning .timerDigits {
+  color: var(--warning);
+  text-shadow: 0 0 10px rgba(229, 173, 74, 0.3);
+}
+
+.warning .circleFillTime {
+  stroke: var(--warning);
+}
+
+.danger .timerDigits {
+  color: var(--danger);
+  text-shadow: 0 0 10px rgba(224, 82, 96, 0.4);
+  animation: pulse 2s infinite;
+}
+
+.danger .circleFillTime {
+  stroke: var(--danger);
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}

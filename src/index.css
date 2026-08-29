@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Press+Start+2P&display=swap');
+
+:root {
+  /* Premium Cyber Dark Blue Palette */
+  --bg-layer-1: #050914; /* Deepest background */
+  --bg-layer-2: #080D19;
+  
+  --surface: #0D1525;
+  --surface-light: #111B2D;
+  --surface-lighter: #142036;
+  
+  --border: #1D3150;
+  --border-light: #28466D;
+
+  --primary: #4D8DFF;
+  --primary-hover: #36B9FF;
+  
+  --text-primary: #E8F0FF;
+  --text-secondary: #7F91AD;
+
+  --success: #3ECF8E;
+  --warning: #E5AD4A;
+  --danger: #E05260;
+
+  --font-primary: 'Space Grotesk', sans-serif;
+  --font-technical: 'IBM Plex Mono', monospace;
+  
+  --glow-subtle: 0 0 10px rgba(77, 141, 255, 0.15);
+  --glow-strong: 0 0 20px rgba(77, 141, 255, 0.45);
+  --shadow-panel: 0 12px 40px rgba(0, 0, 0, 0.25);
+  
+  --radius-sm: 0;
+  --radius: 0;
+  --radius-lg: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-layer-1);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background Layers */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Very subtle technical grid */
+  background-image: 
+    linear-gradient(rgba(29, 49, 80, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 49, 80, 0.15) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Radial blue illumination behind important areas */
+  background: radial-gradient(circle at 50% 30%, rgba(77, 141, 255, 0.05) 0%, transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  z-index: 1;
+}
+
+/* Base UI Resets */
+button {
+  font-family: var(--font-technical);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--radius); 
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input {
+  font-family: var(--font-technical);
+  border-radius: var(--radius);
+}
+
+/* Utility Classes */
+.hud-label {
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+}
+
+.hud-value {
+  font-family: var(--font-technical);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--success);
+  margin-right: 6px;
+  box-shadow: 0 0 6px rgba(62, 207, 142, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide {
+  animation: slideUpFade 0.4s ease-out forwards;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  10% { opacity: 0.9; }
+  20% { opacity: 1; }
+  30% { opacity: 0.8; }
+  40% { opacity: 1; }
+  50% { opacity: 0.95; }
+  60% { opacity: 0.85; }
+  70% { opacity: 1; }
+  80% { opacity: 0.9; }
+  90% { opacity: 1; }
+  100% { opacity: 0.95; }
+}
+
+button:hover:not(:disabled) {
+  animation: flicker 0.2s infinite alternate;
+}
+
+/* Cyber Glitch Effect (Static) */
+.glitch {
+  position: relative;
+  text-shadow: -0.025em 0 0 rgba(0, 255, 255, 0.75), -0.025em -0.025em 0 rgba(255, 0, 255, 0.75), -0.025em -0.05em 0 rgba(77, 141, 255, 0.75);
+}
+
+/* Cyber Scanlines Overlay */
+.scanlines {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.15));
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@keyframes brandPulse {
+  0% { text-shadow: 0 0 5px rgba(232, 240, 255, 0.1); }
+  50% { text-shadow: 0 0 15px rgba(232, 240, 255, 0.5), 0 0 20px rgba(77, 141, 255, 0.4); }
+  100% { text-shadow: 0 0 5px rgba(232, 240, 255, 0.1); }
+}
+
+.brand {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 3px;
+  font-size: 1rem;
+  font-style: italic;
+  animation: brandPulse 3s infinite ease-in-out;
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 5px var(--danger), 0 0 15px var(--danger);
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.5;
+  }
+}
+
+.redX {
+  color: var(--danger);
+  animation: neonFlicker 4s infinite alternate;
+  display: inline-block;
+}

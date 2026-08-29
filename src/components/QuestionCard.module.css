@@ -1,0 +1,178 @@
+.cardContainer {
+  background-color: rgba(13, 21, 37, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  padding: 3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  min-height: 0;
+}
+
+
+.bgNumber {
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  font-family: var(--font-technical);
+  font-size: 15rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.02);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.challengeNumber {
+  font-family: var(--font-technical);
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.questionText {
+  font-family: var(--font-technical);
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  overflow-y: auto;
+  flex-shrink: 1;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.questionText::-webkit-scrollbar {
+  display: none;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.optionBtn {
+  background-color: var(--surface-light);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.optionIndicator {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  font-family: var(--font-technical);
+}
+
+.optionLetter {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 1.15rem;
+}
+
+.optionText {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.optionBtn:hover {
+  background-color: rgba(77, 141, 255, 0.05);
+  border-color: var(--border-light);
+}
+
+.optionBtn.selected {
+  border-color: var(--primary);
+  background-color: rgba(77, 141, 255, 0.1);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.navBtn {
+  background-color: var(--surface-light);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+  color: var(--primary);
+  background-color: rgba(77, 141, 255, 0.1);
+  border-color: var(--primary);
+  box-shadow: var(--glow-subtle);
+}
+
+@media (max-width: 1024px) {
+  .cardContainer { padding: 2rem; }
+  .bgNumber { font-size: 10rem; }
+  .cardHeader { margin-bottom: 1.5rem; padding-bottom: 0.5rem; }
+  .challengeNumber { font-size: 1.25rem; }
+  .questionText { font-size: 1.15rem; margin-bottom: 1.5rem; line-height: 1.5; }
+  .optionsList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .optionBtn { padding: 0.75rem 1rem; }
+  .optionIndicator { margin-right: 1rem; }
+  .optionLetter { font-size: 1rem; margin-right: 0.5rem; }
+  .optionSymbol { font-size: 0.75rem; }
+  .optionText { font-size: 1.1rem; }
+  .actions { padding-top: 1rem; }
+}
+
+@media (max-width: 768px) {
+  .cardContainer { padding: 1rem; }
+  .optionsList { grid-template-columns: 1fr; }
+  .actions { flex-direction: row; gap: 0.5rem; }
+  .navBtn { flex: 1; text-align: center; padding: 0.5rem; font-size: 0.75rem; }
+  .bgNumber { display: none; }
+}

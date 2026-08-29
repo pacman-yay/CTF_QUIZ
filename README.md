@@ -2,7 +2,7 @@
 
 A highly secure, production-ready full-stack Capture The Flag (CTF) quiz platform built with **React** (Vite) and **Google Apps Script + Google Sheets** as a serverless database.
 
-## 🚀 Features & Enhancements
+##  Features & Enhancements
 
 ### User Interface (Cyber Theme)
 - **Deep Cyber Aesthetic:** Sharp 90-degree corners, monospace fonts (`IBM Plex Mono`), and deep blue overlays (`var(--bg-layer-1)`).
@@ -14,7 +14,7 @@ A highly secure, production-ready full-stack Capture The Flag (CTF) quiz platfor
 - **Dynamic Scrambling:** Uses a Fisher-Yates shuffle algorithm on the client to completely randomize question order for every new session, preventing screen-peeking.
 - **Session Persistence:** If a user accidentally refreshes, their answers and remaining time are preserved via `localStorage`.
 
-### 🛡️ Iron-Clad Security (Anti-Cheating)
+### Iron-Clad Security (Anti-Cheating)
 - **Zero-Knowledge Frontend:** The correct answers are *never* transmitted to the browser.
 - **Anti-Spoofing Architecture:** The frontend must securely pass the team's password alongside every API request (`startQuiz`, `submitQuiz`). The backend verifies this password before allowing any database writes.
 - **Anti-Time Freeze Validation:** While the browser displays a 30-minute countdown timer, the backend records the exact unalterable `Start Time`. If a team tampers with their system clock and takes more than 31 minutes to submit, the backend instantly flags their submission.
@@ -24,7 +24,7 @@ A highly secure, production-ready full-stack Capture The Flag (CTF) quiz platfor
 
 ---
 
-## 🛠️ Architecture Setup
+## Architecture Setup
 
 ### 1. The Database (Google Sheets)
 1. Create a new Google Sheet and ensure the bottom tab is named `Sheet1`.
